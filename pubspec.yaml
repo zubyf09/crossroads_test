@@ -1,0 +1,49 @@
+name: crossroads_test
+description: A new Flutter application.
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.1.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^0.1.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  rxdart: ^0.22.0
+  flutter_spinkit: ^4.1.1+1
+  provider: ^3.2.0
+  equatable: ^1.0.1
+  flutter_bloc: ^2.1.1
+  dio: ^3.0.7
+  font_awesome_flutter: ^8.5.0
+
+
+
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+  assets:
+    - assets/
+  fonts:
+    - family: montserrat
+      fonts:
+        - asset: fonts/montserrat/Montserrat-Black.ttf
+        - asset: fonts/montserrat/Montserrat-Bold.ttf
+        - asset: fonts/montserrat/Montserrat-SemiBold.ttf
+        - asset: fonts/montserrat/Montserrat-Light.ttf
+        - asset: fonts/montserrat/Montserrat-Regular.ttf
+
