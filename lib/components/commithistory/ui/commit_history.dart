@@ -1,5 +1,6 @@
 import 'package:crossroads_test/components/commithistory/bloc/bloc.dart';
 import 'package:crossroads_test/dao/commit.dart';
+import 'package:crossroads_test/dao/commit_history.dart';
 import 'package:crossroads_test/utils/assets.dart';
 import 'package:crossroads_test/utils/style.dart';
 import 'package:flutter/cupertino.dart';
@@ -24,7 +25,7 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
+
       body:  BlocBuilder(
           bloc: historyBloc,
           builder: (BuildContext context, CommitHistoryState state) {
@@ -33,9 +34,7 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
                 Expanded(
                   child: (state is CommitHistoryLoadedState)
                       ? Container(
-                    child:
-                    buildCommitHisotryList(state.commitHistory.commit),
-                  )
+                    child:  buildCommitHisotryList(state.commitResponse.commitHistory),)
                       : (state is CommitHistoryLoadingState)
                       ? Center(
                       child: Container(
@@ -54,7 +53,7 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
                       : (state is CommitHistoryErrorState)
                       ? Center(
                     child:
-                    Text("ERROR", style: Style.errorTextStyle),
+                    Text("Something went wrong", style: Style.errorTextStyle),
                   )
                       : Container(),
                 ),
@@ -66,16 +65,16 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
 
   }
 
-  Widget buildCommitHisotryList(List<Commit> commits) {
+  Widget buildCommitHisotryList(List<CommitHistory> commitsHistory) {
     return ListView.builder(
-      itemCount: commits.length,
+      itemCount: commitsHistory.length,
       itemBuilder: (BuildContext context, int index) {
-        final commit = commits[index];
+        final commitHistory = commitsHistory[index];
 
         return Column(
           children: <Widget>[
             Container(
-              child: Text(commit.message, style: Style.errorTextStyle),
+              child: Text(commitHistory.commit.message, style: Style.errorTextStyle),
             ),
             Divider(
               color: Colors.white54,
