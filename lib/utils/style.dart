@@ -13,4 +13,18 @@ class Style {
       fontWeight: FontWeight.w400);
 
 
+  static final TextStyle itemMessageTextStyle = TextStyle(
+      fontSize: 16,
+      fontFamily: Assets.fontFamily,
+      color: Colors.white,
+      fontStyle:  FontStyle.normal,
+      fontWeight: FontWeight.w400);
+
+  static final TextStyle subtitleTextStyle = TextStyle(
+      fontSize: 13,
+      fontFamily: Assets.fontFamily,
+      color: Colors.white,
+      fontStyle:  FontStyle.normal,
+      fontWeight: FontWeight.w400);
+
 }

@@ -26,6 +26,10 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
   Widget build(BuildContext context) {
     return Scaffold(
 
+      appBar: AppBar(
+        centerTitle: true ,
+          title: const Text('CrossRoad Test'),),
+
       body:  BlocBuilder(
           bloc: historyBloc,
           builder: (BuildContext context, CommitHistoryState state) {
@@ -34,7 +38,27 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
                 Expanded(
                   child: (state is CommitHistoryLoadedState)
                       ? Container(
-                    child:  buildCommitHisotryList(state.commitResponse.commitHistory),)
+                    decoration: BoxDecoration(
+                        image: new DecorationImage(
+                          image: new ExactAssetImage(Assets.imgBackground),
+                          fit: BoxFit.cover,
+                        )),
+                    child:  Stack(children: <Widget>[
+
+                      buildCommitHisotryList(state.commitResponse.commitHistory),
+
+                      Container(alignment: Alignment.bottomRight,
+                      margin: EdgeInsets.only(right: 20,bottom: 20),
+                       child: FloatingActionButton(
+                         onPressed: (){
+                           historyBloc.add(FetchCommitHistoryEvent());
+                         },
+                         child: Icon(Icons.refresh),
+                       ),
+                      )
+
+
+                    ],),)
                       : (state is CommitHistoryLoadingState)
                       ? Center(
                       child: Container(
@@ -61,8 +85,6 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
             );
           }),
     );
-
-
   }
 
   Widget buildCommitHisotryList(List<CommitHistory> commitsHistory) {
@@ -74,7 +96,15 @@ class _CommitHistoryViewState extends State<CommitHistoryView> {
         return Column(
           children: <Widget>[
             Container(
-              child: Text(commitHistory.commit.message, style: Style.errorTextStyle),
+              margin: EdgeInsets.all(10),
+              alignment: Alignment.center,
+              child: Text(commitHistory.commit.author.name, style: Style.subtitleTextStyle),
+            ),
+
+            Container(
+              margin: EdgeInsets.all(10),
+              alignment: Alignment.center,
+              child: Text(commitHistory.commit.message, style: Style.subtitleTextStyle),
             ),
             Divider(
               color: Colors.white54,
