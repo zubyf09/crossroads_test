@@ -10,11 +10,6 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^0.1.2
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
-
   rxdart: ^0.22.0
   flutter_spinkit: ^4.1.1+1
   provider: ^3.2.0
@@ -22,6 +17,16 @@ dev_dependencies:
   flutter_bloc: ^2.1.1
   dio: ^3.0.7
   font_awesome_flutter: ^8.5.0
+  json_annotation: ^3.0.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^1.7.2
+  json_serializable: ^3.2.5
+
+
 
 
 
